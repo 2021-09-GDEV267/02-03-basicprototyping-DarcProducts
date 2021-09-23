@@ -45,6 +45,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -98,7 +99,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.020806655, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -109,7 +110,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.56, y: 2.56}
+  m_Size: {x: 0.6443225, y: 2.56}
   m_EdgeRadius: 0
 --- !u!50 &8870259140759028304
 Rigidbody2D:
@@ -144,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7497654c9a632ee47a312e6633b9cee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explodedPrefab: {fileID: 8348300333329024778, guid: 613c15580364a97419aa2fb2b92fc07f, type: 3}
+  explodedPrefab: {fileID: 7099956231347623526, guid: 3d23ea43afd091c428b21a397429de01, type: 3}
   explodeOnHitLayer:
     serializedVersion: 2
     m_Bits: 256

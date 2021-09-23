@@ -15,18 +15,6 @@ public class ExplodeToSmallBits : MonoBehaviour
     {
         if (useTrigger) return;
         Activate(collision.gameObject);
-        if (rb.velocity.x > explodeThreshold | rb.velocity.y > explodeThreshold)
-        {
-            Rigidbody2D otherRB = collision.gameObject.GetComponent<Rigidbody2D>();
-            if (otherRB != null)
-            {
-                Vector2 otherVel = otherRB.velocity;
-                otherVel -= otherVel * reduceVelValue;
-                otherRB.velocity = otherVel;
-            }
-            Instantiate(explodedPrefab, transform.position, transform.rotation);
-            Destroy(gameObject);
-        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
