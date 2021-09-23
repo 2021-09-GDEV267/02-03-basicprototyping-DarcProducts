@@ -17,6 +17,7 @@ public class BombPicker : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         basketList = new List<GameObject>(0);
         for (int i = 0; i < numBaskets; i++)
         {
