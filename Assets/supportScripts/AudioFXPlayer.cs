@@ -6,7 +6,6 @@ public class AudioFXPlayer : MonoBehaviour
 {
     [SerializeField] List<AudioClip> audioFXList = new List<AudioClip>(0);
     [SerializeField] AudioSource fXSource;
-
     public void PlayAudioEffect(int index)
     {
         if (fXSource == null || index > audioFXList.Count)

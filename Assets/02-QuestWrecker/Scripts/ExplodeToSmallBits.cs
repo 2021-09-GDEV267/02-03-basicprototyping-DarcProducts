@@ -1,6 +1,6 @@
 using UnityEngine;
-using UnityEngine.Events;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class ExplodeToSmallBits : MonoBehaviour
 {
     [SerializeField] GameObject explodedPrefab;

@@ -19,6 +19,8 @@ public class Slingshot : MonoBehaviour
     [Header("Projectile Data")]
     [SerializeField] GameObject prefabProjectile;
     [SerializeField] float velocityMult = 8f;
+    [SerializeField] GameEvent OnPulledSlingshot;
+    [SerializeField] GameEvent OnReleasedSlingshot;
 
     void Awake()
     {
@@ -51,12 +53,12 @@ public class Slingshot : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
+            OnReleasedSlingshot?.Invoke();
             aimingMode = false;
             projectileRB.isKinematic = false;
             projectileRB.velocity = -mouseDelta * velocityMult;
             FollowCam.POI = projectile;
             projectile = null;
-
             QuestWrecker.ShotFired();
             ProjectileLine.S.poi = projectile;
         }
@@ -86,6 +88,7 @@ public class Slingshot : MonoBehaviour
 
     void OnMouseDown()
     {
+        OnPulledSlingshot?.Invoke();
         aimingMode = true;
         projectile = Instantiate(prefabProjectile) as GameObject;
         projectile.transform.position = launchPos;
