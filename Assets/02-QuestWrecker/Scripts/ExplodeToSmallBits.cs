@@ -8,6 +8,7 @@ public class ExplodeToSmallBits : MonoBehaviour
     [SerializeField] float explodeThreshold;
     [SerializeField] float fallVelThreshold;
     [Range(0f, 1f)] [SerializeField] float reduceVelValue;
+    [SerializeField] bool useDynamicResponse = false;
     public GameEvent OnExploded;
     Rigidbody2D rb;
 
@@ -42,7 +43,10 @@ public class ExplodeToSmallBits : MonoBehaviour
                 if (objRB.velocity.magnitude > explodeThreshold || rb.velocity.magnitude > fallVelThreshold)
                 {
                     Instantiate(explodedPrefab, transform.position, transform.rotation);
-                    OnExploded?.Invoke();
+                    if (useDynamicResponse)
+                        OnExploded?.Invoke(gameObject);
+                    else
+                        OnExploded?.Invoke();
                     Destroy(gameObject);
                 }
             }

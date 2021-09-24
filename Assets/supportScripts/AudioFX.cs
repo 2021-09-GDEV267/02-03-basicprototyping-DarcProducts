@@ -19,6 +19,8 @@ public class AudioFX : MonoBehaviour
         }
     }
 
+    public void StopAudio() => source.Stop();
+
     public float GetClipLength()
     {
         if (clip != null)

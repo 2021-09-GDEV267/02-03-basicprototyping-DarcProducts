@@ -14,6 +14,7 @@ public class QuestWrecker : MonoBehaviour
     [SerializeField] TMP_Text uiButton;
     [SerializeField] Vector2 castlePos;
     [SerializeField] GameObject[] castles;
+    [SerializeField] GameEvent OnBeatCastle;
     string showing = "Show Slingshot";
     int level;
     int levelMax;
@@ -75,6 +76,7 @@ public class QuestWrecker : MonoBehaviour
 
     void NextLevel()
     {
+        OnBeatCastle?.Invoke();
         level++;
         if (level == levelMax)
             level = 0;
