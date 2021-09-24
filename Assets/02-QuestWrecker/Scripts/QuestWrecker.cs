@@ -54,7 +54,7 @@ public class QuestWrecker : MonoBehaviour
             Destroy(pTemp);
 
 
-        castle = Instantiate<GameObject>(castles[level]);
+        castle = Instantiate(castles[level]);
         castle.transform.position = castlePos;
         shotsTaken = 0;
 

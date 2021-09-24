@@ -74,14 +74,12 @@ public class Slingshot : MonoBehaviour
 
     void OnMouseEnter()
     {
-        print("Slingshot: OnMouseEnter()");
         spriteRenderer.sprite = slingshotGlow;
         launchPoint.SetActive(true);
     }
 
     void OnMouseExit()
     {
-        print("Slingshot: OnMouseExit()");
         spriteRenderer.sprite = slingshotOrig;
         launchPoint.SetActive(false);
     }

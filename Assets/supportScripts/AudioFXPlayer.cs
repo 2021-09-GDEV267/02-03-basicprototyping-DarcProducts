@@ -12,6 +12,10 @@ public class AudioFXPlayer : MonoBehaviour
         if (fXSource == null || index > audioFXList.Count)
             return;
         if (audioFXList[index] != null)
-            fXSource.PlayOneShot(audioFXList[index]);
+        {
+            if (fXSource.clip != audioFXList[index])
+                fXSource.PlayOneShot(audioFXList[index]);
+        }
     }
 }
+    

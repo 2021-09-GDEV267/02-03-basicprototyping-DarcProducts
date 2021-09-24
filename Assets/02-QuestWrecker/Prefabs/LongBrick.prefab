@@ -148,7 +148,8 @@ MonoBehaviour:
   explodedPrefab: {fileID: 7099956231347623526, guid: 3d23ea43afd091c428b21a397429de01, type: 3}
   explodeOnHitLayer:
     serializedVersion: 2
-    m_Bits: 256
-  explodeThreshold: 1
-  useTrigger: 0
+    m_Bits: 2147483647
+  explodeThreshold: 4
+  fallVelThreshold: 2
   reduceVelValue: 0.8
+  OnExploded: {fileID: 11400000, guid: 3ebb99974c774db4db35fba0c8411013, type: 2}

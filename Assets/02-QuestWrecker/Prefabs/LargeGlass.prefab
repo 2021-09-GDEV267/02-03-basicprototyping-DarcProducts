@@ -10,12 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7462639825393888207}
   - component: {fileID: 7462639825393888206}
-  - component: {fileID: 7462639825393888209}
-  - component: {fileID: 7462639825393888208}
-  - component: {fileID: 7462639825393888211}
+  - component: {fileID: 6732598474402496039}
   - component: {fileID: 8558605821590979376}
   - component: {fileID: 7462639825393888204}
-  - component: {fileID: -3304922575870397139}
   m_Layer: 0
   m_Name: LargeGlass
   m_TagString: Castle Piece
@@ -89,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &7462639825393888209
+--- !u!61 &6732598474402496039
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,7 +99,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.6018587}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -113,59 +110,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.32, y: 0.07628262}
-  m_EdgeRadius: 0
---- !u!61 &7462639825393888208
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7462639825393888210}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.60162264}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 1.28}
-    newSize: {x: 0.32, y: 1.28}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.32, y: 0.070564866}
-  m_EdgeRadius: 0
---- !u!61 &7462639825393888211
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7462639825393888210}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.005197555}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 1.28}
-    newSize: {x: 0.32, y: 1.28}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.063552916, y: 1.1338389}
+  m_Size: {x: 0.32, y: 1.28}
   m_EdgeRadius: 0
 --- !u!50 &8558605821590979376
 Rigidbody2D:
@@ -203,26 +148,8 @@ MonoBehaviour:
   explodedPrefab: {fileID: 3407178338450229748, guid: 84514cfb7b0e175458d5eb60966923dc, type: 3}
   explodeOnHitLayer:
     serializedVersion: 2
-    m_Bits: 768
-  explodeThreshold: 0
-  useTrigger: 1
-  reduceVelValue: 0.4
---- !u!114 &-3304922575870397139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7462639825393888210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d70f64ae0366b740be7a6a76c7a9b24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explodePrefab: {fileID: 3407178338450229748, guid: 84514cfb7b0e175458d5eb60966923dc, type: 3}
-  explodeSelfOnHitLayer:
-    serializedVersion: 2
     m_Bits: 2147483647
-  explodeThreshold: 0
-  useTrigger: 1
+  explodeThreshold: 1
+  fallVelThreshold: 0.5
   reduceVelValue: 0.2
+  OnExploded: {fileID: 11400000, guid: debacfdf1e1bf5245b9ec91fa2882cce, type: 2}

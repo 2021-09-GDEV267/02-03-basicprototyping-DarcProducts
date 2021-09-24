@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2397715361993745725}
   - component: {fileID: 7693274057045797496}
   - component: {fileID: -917493272364748475}
-  - component: {fileID: -5399618054156086394}
+  - component: {fileID: 5913026642162653801}
   m_Layer: 0
   m_Name: Chicken
   m_TagString: Untagged
@@ -150,10 +150,11 @@ MonoBehaviour:
   explodedPrefab: {fileID: 1221947046022214545, guid: 77e6fdb040cd05b41b2dac9b9fe3f65c, type: 3}
   explodeOnHitLayer:
     serializedVersion: 2
-    m_Bits: 256
-  explodeThreshold: 0.2
-  useTrigger: 0
-  reduceVelValue: 0.1
+    m_Bits: 2147483647
+  explodeThreshold: 0.5
+  fallVelThreshold: 0.5
+  reduceVelValue: 0.2
+  OnExploded: {fileID: 11400000, guid: 36dc2a5b04de5c34cb897361d57022b9, type: 2}
 --- !u!114 &-917493272364748475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,22 +167,108 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee41fd44c57f78b409b5dc74c1ce8639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-5399618054156086394
-MonoBehaviour:
+--- !u!82 &5913026642162653801
+AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7693274057045797479}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d70f64ae0366b740be7a6a76c7a9b24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explodePrefab: {fileID: 1221947046022214545, guid: 77e6fdb040cd05b41b2dac9b9fe3f65c, type: 3}
-  explodeSelfOnHitLayer:
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 124517c53bee7824986109a6fb7f2088, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.4
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 0.1
+  MaxDistance: 30
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
     serializedVersion: 2
-    m_Bits: 2147483647
-  explodeThreshold: 0.1
-  useTrigger: 0
-  reduceVelValue: 0.1
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0033333334
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.39401597
+      value: 0.34940386
+      inSlope: -1.0033445
+      outSlope: -1.0033445
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1.0033445
+      outSlope: -1.0033445
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

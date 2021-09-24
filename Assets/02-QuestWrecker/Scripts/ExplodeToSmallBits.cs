@@ -1,42 +1,48 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ExplodeToSmallBits : MonoBehaviour
 {
     [SerializeField] GameObject explodedPrefab;
     [SerializeField] LayerMask explodeOnHitLayer;
     [SerializeField] float explodeThreshold;
-    [SerializeField] bool useTrigger;
+    [SerializeField] float fallVelThreshold;
     [Range(0f, 1f)] [SerializeField] float reduceVelValue;
+    public GameEvent OnExploded;
     Rigidbody2D rb;
 
     void Awake() => rb = GetComponent<Rigidbody2D>();
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (useTrigger) return;
-        Activate(collision.gameObject);
+        SlowOtherObject(collision.gameObject);
+        TryExplode(collision.gameObject);
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (!useTrigger) return;
-        Activate(collision.gameObject);
-    }
-
-    void Activate(GameObject obj)
+    void SlowOtherObject(GameObject obj)
     {
         Rigidbody2D otherRB = obj.GetComponent<Rigidbody2D>();
-        if (otherRB != null)
         {
-            Vector2 otherVel = otherRB.velocity;
-
-            if (otherVel.x > explodeThreshold | otherVel.y > explodeThreshold)
+            if (otherRB != null)
             {
-                if (Utils.IsInLayerMask(obj, explodeOnHitLayer))
+                Vector2 otherVel = otherRB.velocity;
+                otherVel -= otherVel * reduceVelValue;
+                otherRB.velocity = otherVel;
+            }
+        }
+    }
+
+    void TryExplode(GameObject obj)
+    {
+        if (Utils.IsInLayerMask(obj, explodeOnHitLayer))
+        {
+            Rigidbody2D objRB = obj.GetComponent<Rigidbody2D>();
+            if (objRB != null)
+            {
+                if (objRB.velocity.magnitude > explodeThreshold || rb.velocity.magnitude > fallVelThreshold)
                 {
                     Instantiate(explodedPrefab, transform.position, transform.rotation);
-                    otherVel -= otherVel * reduceVelValue;
-                    otherRB.velocity = otherVel;
+                    OnExploded?.Invoke();
                     Destroy(gameObject);
                 }
             }

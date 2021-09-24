@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 5829373168301223299}
   - component: {fileID: 8842384037398827807}
   - component: {fileID: 8015069481609828634}
-  - component: {fileID: -482642204372444633}
-  - component: {fileID: 2610909671339781781}
+  - component: {fileID: 7401427173655239979}
   m_Layer: 9
   m_Name: QuarterBrick
   m_TagString: Castle Piece
@@ -134,7 +133,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-482642204372444633
+--- !u!114 &7401427173655239979
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,26 +142,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5829373168301223298}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c7243a2abbe95d46bc1270076adb2dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 7497654c9a632ee47a312e6633b9cee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyOnHitLayer:
+  explodedPrefab: {fileID: 8430393475728518389, guid: 63fc006cbacc7b14c885d7a384919fcb, type: 3}
+  explodeOnHitLayer:
     serializedVersion: 2
-    m_Bits: 256
---- !u!114 &2610909671339781781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5829373168301223298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c53b000e920b92c4d87811608541567f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timedObject: {fileID: 8430393475728518389, guid: 63fc006cbacc7b14c885d7a384919fcb, type: 3}
-  timeToExist: 0.8
-  createOnHitLayer:
-    serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 2147483647
+  explodeThreshold: 0.2
+  fallVelThreshold: 0.1
+  reduceVelValue: 0.2
+  OnExploded: {fileID: 11400000, guid: 3ebb99974c774db4db35fba0c8411013, type: 2}
