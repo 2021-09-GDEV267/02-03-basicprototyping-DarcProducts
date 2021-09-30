@@ -99,18 +99,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.020806655, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.56, y: 2.56}
+    oldSize: {x: 0.64, y: 2.56}
     newSize: {x: 2.56, y: 2.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6443225, y: 2.56}
+  m_Size: {x: 0.61, y: 2.56}
   m_EdgeRadius: 0
 --- !u!50 &8870259140759028304
 Rigidbody2D:
@@ -148,8 +148,9 @@ MonoBehaviour:
   explodedPrefab: {fileID: 7099956231347623526, guid: 3d23ea43afd091c428b21a397429de01, type: 3}
   explodeOnHitLayer:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 256
   explodeThreshold: 4
   fallVelThreshold: 2
   reduceVelValue: 0.8
+  useDynamicResponse: 0
   OnExploded: {fileID: 11400000, guid: 3ebb99974c774db4db35fba0c8411013, type: 2}

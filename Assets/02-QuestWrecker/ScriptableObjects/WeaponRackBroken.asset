@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af3bb3d88e77779488ebdb1f31505d66, type: 3}
-  m_Name: FurnaceExploded
+  m_Name: WeaponRackBroken
   m_EditorClassIdentifier: 
   useDynamicResponse: 1

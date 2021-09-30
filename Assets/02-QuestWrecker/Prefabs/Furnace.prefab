@@ -9860,9 +9860,9 @@ MonoBehaviour:
   explodedPrefab: {fileID: 403528434434370579, guid: cc60e1096882ef74da0d5059d951750d, type: 3}
   explodeOnHitLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 2147483647
   explodeThreshold: 4
-  fallVelThreshold: 2
+  fallVelThreshold: 3
   reduceVelValue: 1
   useDynamicResponse: 1
   OnExploded: {fileID: 11400000, guid: 9fe23f3e39911484482b31d2dcbd3bb7, type: 2}

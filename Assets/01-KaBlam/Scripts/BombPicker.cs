@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 public class BombPicker : MonoBehaviour
 {
@@ -13,10 +14,12 @@ public class BombPicker : MonoBehaviour
     [SerializeField] float delayBetweenWaves;
     [SerializeField] GameObject explosionPrefab;
     [SerializeField] float delayBetweenExplosions;
+    [SerializeField] TMP_Text menuText;
     List<GameObject> basketList;
 
     void Start()
     {
+        menuText.gameObject.SetActive(false);
         Time.timeScale = 1;
         basketList = new List<GameObject>(0);
         for (int i = 0; i < numBaskets; i++)
@@ -28,6 +31,14 @@ public class BombPicker : MonoBehaviour
             basketGO.transform.position = pos;
             basketList.Add(basketGO);
         }
+    }
+
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.Tab))
+            menuText.gameObject.SetActive(true);
+        else
+            menuText.gameObject.SetActive(false);
     }
 
     public void BombDestroyed() => StartCoroutine(ExplodeAllBombs());

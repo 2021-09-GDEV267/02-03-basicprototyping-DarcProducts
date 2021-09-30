@@ -10,6 +10,10 @@ public class ExplodeOnDisable : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
 
         foreach (Collider2D c in colliders)
-            c.attachedRigidbody.AddForce(explosionForce * (c.transform.position - transform.position), ForceMode2D.Impulse);
+        {
+            Rigidbody2D tRB = c.attachedRigidbody;
+            if (tRB != null)
+                tRB.AddForce(explosionForce * (c.transform.position - transform.position), ForceMode2D.Impulse);
+        }
     }
 }

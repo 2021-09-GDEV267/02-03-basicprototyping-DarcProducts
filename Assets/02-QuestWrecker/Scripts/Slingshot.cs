@@ -49,7 +49,8 @@ public class Slingshot : MonoBehaviour
         }
 
         Vector3 projPos = launchPos + mouseDelta;
-        projectile.transform.position = projPos;
+        if (projectile != null)
+            projectile.transform.position = projPos;
 
         if (Input.GetMouseButtonUp(0))
         {
@@ -77,6 +78,8 @@ public class Slingshot : MonoBehaviour
     void OnMouseEnter()
     {
         spriteRenderer.sprite = slingshotGlow;
+        if (!QuestWrecker.S.GetCurrentView().Equals("Show Slingshot"))
+            QuestWrecker.S.SwitchView("Show Slingshot");
         launchPoint.SetActive(true);
     }
 

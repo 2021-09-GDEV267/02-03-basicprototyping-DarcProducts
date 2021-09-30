@@ -12,6 +12,7 @@ public class QuestWrecker : MonoBehaviour
     [SerializeField] TMP_Text uiLevel;
     [SerializeField] TMP_Text uiShots;
     [SerializeField] TMP_Text uiButton;
+    [SerializeField] TMP_Text menuButton;
     [SerializeField] Vector2 castlePos;
     [SerializeField] GameObject[] castles;
     [SerializeField] GameEvent OnBeatCastle;
@@ -27,6 +28,7 @@ public class QuestWrecker : MonoBehaviour
         S = this;
         level = 0;
         levelMax = castles.Length;
+        menuButton.gameObject.SetActive(false);
         StartLevel();
     }
 
@@ -39,6 +41,11 @@ public class QuestWrecker : MonoBehaviour
             SwitchView("Show Both");
             Invoke(nameof(NextLevel), 2f);
         }
+        
+        if (Input.GetKey(KeyCode.Tab))
+            menuButton.gameObject.SetActive(true);
+        else
+            menuButton.gameObject.SetActive(false);
     }
 
     void StartLevel()
@@ -109,5 +116,6 @@ public class QuestWrecker : MonoBehaviour
         }
     }
 
+    public string GetCurrentView() => showing;
     public static void ShotFired() => S.shotsTaken++;
 }
