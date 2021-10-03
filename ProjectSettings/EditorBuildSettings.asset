@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/02-QuestWrecker/Main-QuestWrecker.unity
     guid: 36a4f7af764a74bfab5a5ff20375bcdb
-  - enabled: 0
-    path: Assets/03-Prototype1/Main-Prototype 1.unity
+  - enabled: 1
+    path: Assets/03-Prototype1/Main-Froggin.unity
     guid: 84930580229bb4f138179e160aab9b89
   m_configObjects: {}

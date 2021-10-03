@@ -16,6 +16,8 @@ public class QuestWrecker : MonoBehaviour
     [SerializeField] Vector2 castlePos;
     [SerializeField] GameObject[] castles;
     [SerializeField] GameEvent OnBeatCastle;
+    [SerializeField] float cameraDistance;
+    float originalCameraDistance;
     string showing = "Show Slingshot";
     int level;
     int levelMax;
@@ -25,6 +27,7 @@ public class QuestWrecker : MonoBehaviour
 
     void Start()
     {
+        originalCameraDistance = Camera.main.transform.position.z;
         S = this;
         level = 0;
         levelMax = castles.Length;
@@ -66,7 +69,7 @@ public class QuestWrecker : MonoBehaviour
         castle.transform.position = castlePos;
         shotsTaken = 0;
 
-        SwitchView("Show Both");
+        SwitchView("Show Slingshot");
         ProjectileLine.S.Clear();
         Goal.goalMet = false;
 
@@ -96,22 +99,25 @@ public class QuestWrecker : MonoBehaviour
             eView = uiButton.text;
 
         showing = eView;
+        Vector2 camPos = Camera.main.transform.position;
+        Vector3 camOrig = new Vector3(camPos.x, camPos.y, originalCameraDistance);
 
         switch (showing)
         {
             case "Show Slingshot":
-                FollowCam.POI = null;
-                uiButton.text = "Show Castle";
+                FollowCam.POI = Slingshot.S.gameObject;
+                Camera.main.transform.position = camOrig;
                 break;
 
             case "Show Castle":
                 FollowCam.POI = S.castle;
-                uiButton.text = "Show Both";
+                Camera.main.transform.position = camOrig;
                 break;
 
             case "Show Both":
-                FollowCam.POI = GameObject.Find("ViewBoth");
-                uiButton.text = "Show Slingshot";
+                Vector3 newPos = GameObject.Find("ViewBoth").transform.position;
+                Camera.main.transform.position = new Vector3(newPos.x, newPos.y, cameraDistance);
+                FollowCam.POI = null;
                 break;
         }
     }

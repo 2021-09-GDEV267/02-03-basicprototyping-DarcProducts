@@ -47,11 +47,11 @@ public class BombPicker : MonoBehaviour
     {
         if (basketList.Count > 0)
         {
-            GameObject basketGO = basketList[basketList.Count - 1];
+            GameObject basketGO = basketList[0];
             basketList.Remove(basketGO);
             Destroy(basketGO);
         }
-        else
+        if (basketList.Count.Equals(0))
         {
             Time.timeScale = 0;
             OnGameFinished?.Invoke();

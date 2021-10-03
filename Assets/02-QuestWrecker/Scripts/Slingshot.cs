@@ -78,8 +78,10 @@ public class Slingshot : MonoBehaviour
     void OnMouseEnter()
     {
         spriteRenderer.sprite = slingshotGlow;
-        if (!QuestWrecker.S.GetCurrentView().Equals("Show Slingshot"))
-            QuestWrecker.S.SwitchView("Show Slingshot");
+
+        //if (!QuestWrecker.S.GetCurrentView().Equals("Show Slingshot"))
+            //QuestWrecker.S.SwitchView("Show Slingshot");
+       
         launchPoint.SetActive(true);
     }
 
