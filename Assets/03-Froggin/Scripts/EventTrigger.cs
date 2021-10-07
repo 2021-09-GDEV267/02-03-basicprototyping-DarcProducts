@@ -1,9 +1,7 @@
 using UnityEngine;
-using UnityEngine.Events;
 
-public class EventTrigger : MonoBehaviour, ITriggerEvent
+public class EventTrigger : MonoBehaviour
 {
-    [SerializeField] UnityEvent<GameObject> OnTriggeredEvent;
     [SerializeField] bool isActive = true;
     [SerializeField] GameEvent triggeredGameEvent;
 
@@ -11,14 +9,23 @@ public class EventTrigger : MonoBehaviour, ITriggerEvent
     {
         if (isActive)
         {
-            OnTriggeredEvent?.Invoke(gameObject);
-            
             if (triggeredGameEvent != null)
                 triggeredGameEvent?.Invoke(gameObject);
         }
     }
 
+    public void TriggerEvent(GameObject obj)
+    {
+        if (isActive)
+        {
+            if (triggeredGameEvent != null)
+                triggeredGameEvent?.Invoke(obj);
+        }
+    }
+
     public void SetActive(bool newValue) => isActive = newValue;
+
+    public bool GetActive() => isActive;
 
     public void PrintConsoleMessage(string message) => print(message);
 }

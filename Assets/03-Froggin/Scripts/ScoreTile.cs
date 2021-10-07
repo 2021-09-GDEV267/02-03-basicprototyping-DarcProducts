@@ -1,18 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ScoreTile : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void TurnOffCollider(GameObject obj)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Collider2D col = obj.GetComponent<Collider2D>();
+        if (col != null)
+        {
+            col.enabled = false;
+            ScoreCounter.S.IsGameWon();
+        }
     }
 }

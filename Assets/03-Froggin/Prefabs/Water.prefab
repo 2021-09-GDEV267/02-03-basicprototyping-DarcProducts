@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7520658365375941843}
   - component: {fileID: -2511083979005077652}
   - component: {fileID: 814662381923717465}
-  - component: {fileID: 3497015610905181879}
   m_Layer: 4
   m_Name: Water
   m_TagString: Untagged
@@ -158,33 +157,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8da623d522496f744af04683c4f5ef6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnTriggeredEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3497015610905181879}
-        m_TargetAssemblyTypeName: CreateTimedPrefab, Assembly-CSharp
-        m_MethodName: CreatePrefab
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 2
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   isActive: 1
   triggeredGameEvent: {fileID: 11400000, guid: 6cb499a8a21cb0944b1388f8b181d690, type: 2}
---- !u!114 &3497015610905181879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5960212471248350022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7391ad06f45ec64687c3a8871af0a17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefab: {fileID: 6240297549176268943, guid: d2b4f3cbcf6c1db49ba81464bcb14c49, type: 3}

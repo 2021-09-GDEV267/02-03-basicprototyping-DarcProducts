@@ -3,8 +3,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewGameEvent", menuName ="New Game Event")]
 public class GameEvent : ScriptableObject
 {
-    [SerializeField] bool useDynamicResponse;
-
     readonly List<GameEventListener> listeners = new List<GameEventListener>(); 
     public void Invoke() { for (int i = listeners.Count - 1; i >= 0; i--) listeners[i].OnEventRaised(); }
     public void Invoke(GameObject obj) { for (int i = listeners.Count - 1; i >= 0; i--) listeners[i].OnEventRaised(obj); }

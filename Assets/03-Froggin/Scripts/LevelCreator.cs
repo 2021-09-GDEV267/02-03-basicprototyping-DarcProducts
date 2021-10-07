@@ -1,92 +1,99 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class LevelCreator : MonoBehaviour
 {
+    [SerializeField] float startDelay;
     [SerializeField] GameObject gravelPrefab, gravelEdge, roadPrefab, waterPrefab, grassEdge, grassPrefab;
-    Vector2 levelDimensions = new Vector2(36, 20);
+    Vector2 levelWidthHeight = new Vector2(36, 17);
+    Vector2 spawnXLocations = new Vector2(-2, 36);
+    [Range(1, 16)] [SerializeField] byte distanceSafePath;
+    [Tooltip("Random between these values")] [SerializeField] Vector2 roadPathSpawnTimes;
+    [Tooltip("Random between these values")] [SerializeField] Vector2 waterPathSpawnTimes;
+    [SerializeField] Slider difficultySlider;
 
     [Header(">----- Water -----<")]
-    [SerializeField] GameObject[] waterPathObjects;
+    [SerializeField] GameObject[] waterObjectsMovingLeft;
 
-    [SerializeField] Transform[] waterPathSpawnLocations;
-    [SerializeField] float[] waterPathSpawnTimes;
+    [SerializeField] GameObject[] waterObjectsMovingRight;
 
     [Header(">----- Road -----<")]
-    [SerializeField] GameObject[] roadPathObjects;
+    [SerializeField] GameObject[] roadObjectsMovingLeft;
 
-    [SerializeField] Transform[] roadPathSpawnLocations;
-    [SerializeField] float[] roadPathSpawnTimes;
+    [SerializeField] GameObject[] roadObjectsMovingRight;
 
-    void Start()
+    [SerializeField] UnityEvent OnGameStart;
+
+    private void Update()
+    {
+        if (difficultySlider != null)
+            if (difficultySlider.gameObject.activeSelf)
+                distanceSafePath = (byte)difficultySlider.value;
+    }
+
+    public void InitializeGame() => StartCoroutine(nameof(StartGame));
+
+    IEnumerator StartGame()
     {
         BuildLevel();
-        StartWaterObjects();
-        StartRoadObjects();
+        Time.timeScale = 10;
+        yield return new WaitForSecondsRealtime(startDelay);
+        Time.timeScale = 1;
+        OnGameStart?.Invoke();
     }
 
     [ContextMenu("Build Level")]
-    public void BuildLevel()
+    void BuildLevel()
     {
-        for (int i = 0; i < levelDimensions.x; i++)
+        int currentWaterPath = distanceSafePath + 1;
+        var spawnLoc = new Vector2(-2, 36);
+        bool sendRight = true;
+
+        for (int i = 0; i < levelWidthHeight.x; i++)
         {
-            for (int j = 0; j < levelDimensions.y; j++)
+            for (int j = 0; j < 17; j++)
             {
                 if (j.Equals(0))
                     SpawnTile(i, j, gravelPrefab);
-                else if (j < 8 && j > 0)
+                else if (j < distanceSafePath && j > 0)
+                {
                     SpawnTile(i, j, roadPrefab);
-                else if (j < 17 && !j.Equals(8))
+                    if (i.Equals(0))
+                    {
+                        if (sendRight)
+                            StartCoroutine(SpawnPathObject((int)spawnLoc.x, j, roadObjectsMovingRight, roadPathSpawnTimes));
+                        else
+                            StartCoroutine(SpawnPathObject((int)spawnLoc.y, j, roadObjectsMovingLeft, roadPathSpawnTimes));
+                        sendRight = !sendRight;
+                    }
+                }
+                else if (j < 17 && !j.Equals(distanceSafePath))
+                {
                     SpawnTile(i, j, waterPrefab);
-                else if (j.Equals(8))
+                    if (i == levelWidthHeight.x - 1)
+                    {
+                        if (sendRight)
+                            StartCoroutine(SpawnPathObject((int)spawnLoc.x, currentWaterPath, waterObjectsMovingRight, waterPathSpawnTimes));
+                        else
+                            StartCoroutine(SpawnPathObject((int)spawnLoc.y, currentWaterPath, waterObjectsMovingLeft, waterPathSpawnTimes));
+                        sendRight = !sendRight;
+                        currentWaterPath++;
+                    }
+                }
+                else if (j.Equals(distanceSafePath))
                     SpawnTile(i, j, gravelEdge);
-                else if (j.Equals(17))
-                    SpawnTile(i, j, grassEdge);
-                else
-                    SpawnTile(i, j, grassPrefab);
             }
         }
     }
 
-    [ContextMenu("Start Water Objects")]
-    public void StartWaterObjects()
-    {
-        for (int i = 0; i < waterPathObjects.Length; i++)
-            StartCoroutine(SpawnWaterPathObject(i, i, waterPathSpawnTimes[i]));
-    }
+    void SpawnTile(int x, int y, GameObject prefab) => Instantiate(prefab, new Vector2(x, y), Quaternion.identity, transform);
 
-    public void SpawnTile(int x, int y, GameObject prefab) => Instantiate(prefab, new Vector2(x, y), Quaternion.identity, transform);
-
-    public IEnumerator SpawnWaterPathObject(int indx, int path, float duration)
+    IEnumerator SpawnPathObject(int xLoc, int yLoc, GameObject[] objs, Vector2 spawnTimes)
     {
-        if (indx < waterPathObjects.Length && path < waterPathSpawnLocations.Length)
-        {
-            if (waterPathObjects[indx] != null)
-            {
-                Instantiate(waterPathObjects[indx], waterPathSpawnLocations[path].position, Quaternion.identity, transform);
-                yield return new WaitForSeconds(duration);
-                StartCoroutine(SpawnWaterPathObject(indx, path, duration));
-            }
-        }
-    }
-
-    [ContextMenu("Start Road Objects")]
-    public void StartRoadObjects()
-    {
-        for (int i = 0; i < roadPathObjects.Length; i++)
-            StartCoroutine(SpawnRoadPathObject(i, i, roadPathSpawnTimes[i]));
-    }
-
-    public IEnumerator SpawnRoadPathObject(int indx, int path, float duration)
-    {
-        if (indx < roadPathObjects.Length && path < roadPathSpawnLocations.Length)
-        {
-            if (roadPathObjects[indx] != null)
-            {
-                Instantiate(roadPathObjects[indx], roadPathSpawnLocations[path].position, Quaternion.identity, transform);
-                yield return new WaitForSeconds(duration);
-                StartCoroutine(SpawnRoadPathObject(indx, path, duration));
-            }
-        }
+        Instantiate(objs[Random.Range(0, objs.Length)], new Vector2(xLoc, yLoc), Quaternion.identity);
+        yield return new WaitForSeconds(Random.Range(spawnTimes.x, spawnTimes.y));
+        StartCoroutine(SpawnPathObject(xLoc, yLoc, objs, spawnTimes));
     }
 }

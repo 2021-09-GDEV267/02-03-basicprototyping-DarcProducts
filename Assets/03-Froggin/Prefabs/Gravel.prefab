@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 328248632017286627}
   - component: {fileID: 8761399810715700094}
   - component: {fileID: 751964210210085252}
-  - component: {fileID: 5041381815944739067}
   m_Layer: 10
   m_Name: Gravel
   m_TagString: Untagged
@@ -125,20 +124,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileType: 1
---- !u!114 &5041381815944739067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 328248632017286625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8da623d522496f744af04683c4f5ef6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnTriggeredEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  isActive: 1
-  triggeredGameEvent: {fileID: 0}

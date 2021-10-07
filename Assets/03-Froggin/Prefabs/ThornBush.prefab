@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1040551837677412377}
   - component: {fileID: 8527663774803238737}
   - component: {fileID: 5607150747564345486}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ThornBush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 1d0509401a59866489c46467d678f9f1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -123,8 +123,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8da623d522496f744af04683c4f5ef6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnTriggeredEvent:
-    m_PersistentCalls:
-      m_Calls: []
   isActive: 1
-  triggeredGameEvent: {fileID: 0}
+  triggeredGameEvent: {fileID: 11400000, guid: a316813602485964b932c8b04b5d4845, type: 2}

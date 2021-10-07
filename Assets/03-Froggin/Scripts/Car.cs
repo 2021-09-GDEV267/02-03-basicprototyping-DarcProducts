@@ -11,9 +11,12 @@ public class Car : MonoBehaviour
         sR.color = new Color32((byte)Random.Range(20, 255), (byte)Random.Range(20, 255), (byte)Random.Range(20, 255), 255);
     }
 
-    void OnCollisionStay2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (Utils.IsInLayerMask(collision.gameObject, frogLayer))
-            eventTrigger.TriggerEvent();
+        {
+            collision.enabled = false;
+            eventTrigger.TriggerEvent(new GameObject());
+        }
     }
 }

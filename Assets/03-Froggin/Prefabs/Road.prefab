@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 637776947185427429}
   - component: {fileID: -480063217165732246}
   - component: {fileID: 5177434473025470607}
-  - component: {fileID: 7412753375704475921}
   m_Layer: 11
   m_Name: Road
   m_TagString: Untagged
@@ -125,20 +124,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileType: 2
---- !u!114 &7412753375704475921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 637776947185427428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8da623d522496f744af04683c4f5ef6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnTriggeredEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  isActive: 1
-  triggeredGameEvent: {fileID: 0}
